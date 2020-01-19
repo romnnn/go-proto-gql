@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "callstack.go",
+        "camelcase.go",
+        "helpers.go",
+        "models.go",
+        "plugin.go",
+        "schema.go",
+    ],
+    importpath = "github.com/danielvladco/go-proto-gql/plugin",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//pb:gql_go_proto",
+        "//pb:go_default_library",
+        "@com_github_gogo_protobuf//proto:go_default_library",
+        "@com_github_gogo_protobuf//protoc-gen-gogo/descriptor:go_default_library",
+        "@com_github_gogo_protobuf//protoc-gen-gogo/generator:go_default_library",
+        "@com_github_gogo_protobuf//types:go_default_library",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+    ],
+)
